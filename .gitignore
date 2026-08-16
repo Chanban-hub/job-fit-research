@@ -1,0 +1,13 @@
+# 个人档案（含姓名、学校、GPA、论文等隐私信息），默认不提交
+profiles/default.yaml
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 本地工具输出
+*.inspect.ndjson

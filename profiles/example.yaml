@@ -1,0 +1,42 @@
+profile_version: 1
+updated: YYYY-MM-DD
+
+identity:
+  label: "candidate"
+  graduation_year: 2027
+  highest_degree: "硕士"
+  degree_status: "在读"
+  school: ""
+  major: ""
+  languages: []
+  work_authorization: ""
+
+demonstrated_evidence:
+  education: []
+  internships: []
+  projects: []
+  research: []
+  technical_skills: []
+  product_and_delivery: []
+  leadership: []
+
+preferences:
+  preferred_roles: []
+  industries: []
+  employer_types: []
+  cities: []
+  preferred_attributes: []
+  avoid_or_deprioritize: []
+
+constraints:
+  coding_strength: ""
+  salary_min: null
+  max_intensity: null
+  travel: ""
+  internship_availability: ""
+
+positioning:
+  primary: ""
+  secondary: ""
+  stretch: ""
+  backup: ""
