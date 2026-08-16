@@ -74,7 +74,7 @@ In Codex, invoke explicitly with `$job-fit-research` or use a natural-language r
 Examples:
 
 ```text
-$job-fit-research company=西门子,施耐德 graduation=2027 city=上海,苏州 source_depth=deep
+$job-fit-research company=星河科技,蓝云集团 graduation=2028 city=成都,武汉 source_depth=deep
 ```
 
 ```text

@@ -82,7 +82,7 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
 
    | 字段 | 说明 | 示例 |
    |---|---|---|
-   | `identity.graduation_year` | 毕业年份（用于资格校验） | `2027` |
+   | `identity.graduation_year` | 毕业年份（用于资格校验） | `2028` |
    | `identity.highest_degree` | 最高学历 | `硕士` |
    | `identity.major` | 专业 | `计算机应用技术` |
    | `demonstrated_evidence` | 已证明能力：论文、实习、项目、竞赛，尽量带量化结果 | `一篇目标检测论文；一次端侧部署项目（示例）` |
@@ -107,12 +107,12 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
 
 | 参数 | 含义 | 示例 |
 |---|---|---|
-| `company` | 公司名，多个用逗号分隔 | `company=顺丰科技,货拉拉` |
+| `company` | 公司名，多个用逗号分隔 | `company=星河科技,蓝云集团` |
 | `role` / `exclude_role` | 岗位关键词 / 排除关键词 | `role=算法,AI` `exclude_role=销售` |
 | `ownership` | 企业性质 | `ownership=国企,央企` / `foreign` / `private` |
 | `industry` | 行业关键词 | `industry=云计算,智能制造` |
 | `city` | 城市 | `city=深圳,上海` |
-| `graduation` | 毕业年份 | `graduation=2027` |
+| `graduation` | 毕业年份 | `graduation=2028` |
 | `degree` | 学历要求 | `degree=硕士` |
 | `batch` | 批次 | `batch=early` / `autumn` / `spring` / `intern-conversion` |
 | `employment` | 全职/实习 | `employment=full-time` / `internship` |
@@ -141,7 +141,7 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
 
 ```text
 # 查两家公司的 27 届校招，做标准深度
-$job-fit-research company=顺丰科技,货拉拉 graduation=2027 source_depth=standard
+$job-fit-research company=星河科技,蓝云集团 graduation=2028 source_depth=standard
 
 # 只要官方确认、薪资 20 万以上、强度 3 以内
 $job-fit-research ownership=国企,央企 industry=云计算,智能制造 max_intensity=3 salary_min=180000 require_official=yes
@@ -150,7 +150,7 @@ $job-fit-research ownership=国企,央企 industry=云计算,智能制造 max_in
 $job-fit-research 外企优先，上海或苏州，不要纯开发岗，可以接受数据分析和AI产品实习，要求有留用机会
 
 # 用指定档案做深度调研
-$job-fit-research profile=/absolute/path/profile.yaml company=字节跳动 source_depth=deep
+$job-fit-research profile=/absolute/path/profile.yaml company=远山智能 source_depth=deep
 
 # 对比上次快照，只报告新增、关闭和截止变化的岗位
 $job-fit-research 对比 previous-jobs.json，只报告新开放、关闭和截止日期变化的岗位
@@ -220,7 +220,7 @@ $job-fit-research 对比 previous-jobs.json，只报告新开放、关闭和截�
 - **改权重/评分规则**：编辑 `references/evaluation.md`，不要直接改 SKILL.md 里的引用说明。
 - **改输出格式**：编辑 `references/output-template.md`。
 - **改信源与交叉验证策略**：编辑 `references/source-playbook.md`。
-- **查公司招聘系统接口**：Moka / 北森 zhiye / 顺丰 / 大华 / 腾讯等已实测接口见 `references/ats-reverse-engineering.md`。
+- **查公司招聘系统接口**：Moka / 北森 zhiye / 自建系统等已实测接口见 `references/ats-reverse-engineering.md`。
 - **改个人偏好规则**：编辑 `profiles/default.yaml` 的 `preferences` 与 `constraints`；注意 SKILL.md 里的硬规则（顶会降级、官方 ATS 优先）默认不可绕过，如需修改请先确认自己的真实需求。
 - **新增公司支持**：如果某家公司的招聘系统（Moka / 北森 / 自建）已在本 Skill 的参考资料之外，可在 `references/source-playbook.md` 里补充该 ATS 的域名与接口特征，方便下次复用。
 
@@ -242,7 +242,7 @@ Skill 会降级为 `offline analysis`：只分析你提供的岗位链接、截�
 
 ### 4. 代理/网络问题（Windows 用户常见）
 
-如果你的 git 全局配置了本地代理（如 `http://127.0.0.1:7890`）但代理没开，git 操作会失败；可临时用 `git -c http.proxy= -c https.proxy= push ...` 绕过，或启动代理后重试。
+如果你的 git 全局配置了本地代理（如 `http://127.0.0.1:<代理端口>`）但代理没开，git 操作会失败；可临时用 `git -c http.proxy= -c https.proxy= push ...` 绕过，或启动代理后重试。
 
 ### 5. 隐私
 

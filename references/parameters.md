@@ -47,7 +47,7 @@ Normalize common expressions:
 ## Examples
 
 ```text
-$job-fit-research company=华为,中兴,西门子 role=产品经理,解决方案 graduation=2027 city=上海,杭州 count=8
+$job-fit-research company=星河科技,蓝云集团 role=算法工程师,产品经理 graduation=2028 city=成都,武汉 count=8
 ```
 
 ```text
@@ -59,7 +59,7 @@ $job-fit-research 外企优先，上海或苏州，不要纯开发岗，可以�
 ```
 
 ```text
-$job-fit-research profile=/absolute/path/profile.yaml company=字节跳动 source_depth=deep
+$job-fit-research profile=/absolute/path/profile.yaml company=远山智能 source_depth=deep
 ```
 
 ```text
@@ -67,7 +67,7 @@ $job-fit-research 对比 previous-jobs.json，只报告新开放、关闭和截�
 ```
 
 ```text
-$job-fit-research company=西门子,施耐德 source_depth=deep require_official=yes，交叉验证薪资、工时和留用情况
+$job-fit-research company=星河科技,蓝云集团 source_depth=deep require_official=yes，交叉验证薪资、工时和留用情况
 ```
 
 ## Company mode
