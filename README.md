@@ -24,7 +24,8 @@ job-fit-research/
 │   ├── output-template.md    # 报告结构、证据标签、48 小时行动要求
 │   ├── parameters.md         # 参数、默认值、自然语言筛选对照表
 │   ├── runtime-contract.md   # 运行边界、降级策略、数据安全
-│   └── source-playbook.md    # 信源族、交叉验证、证据台账格式
+│   ├── source-playbook.md    # 信源族、交叉验证、证据台账格式
+│   └── ats-reverse-engineering.md  # ATS 逆向速查表（Moka/北森/自建系统实测接口）
 └── scripts/
     └── score_jobs.py         # 确定性评分脚本（四个及以上岗位时运行）
 ```
@@ -219,6 +220,7 @@ $job-fit-research 对比 previous-jobs.json，只报告新开放、关闭和截�
 - **改权重/评分规则**：编辑 `references/evaluation.md`，不要直接改 SKILL.md 里的引用说明。
 - **改输出格式**：编辑 `references/output-template.md`。
 - **改信源与交叉验证策略**：编辑 `references/source-playbook.md`。
+- **查公司招聘系统接口**：Moka / 北森 zhiye / 顺丰 / 大华 / 腾讯等已实测接口见 `references/ats-reverse-engineering.md`。
 - **改个人偏好规则**：编辑 `profiles/default.yaml` 的 `preferences` 与 `constraints`；注意 SKILL.md 里的硬规则（顶会降级、官方 ATS 优先）默认不可绕过，如需修改请先确认自己的真实需求。
 - **新增公司支持**：如果某家公司的招聘系统（Moka / 北森 / 自建）已在本 Skill 的参考资料之外，可在 `references/source-playbook.md` 里补充该 ATS 的域名与接口特征，方便下次复用。
 
