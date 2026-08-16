@@ -8,6 +8,8 @@
 - 想知道某个岗位和自己简历的匹配度，以及这个岗位本身值不值得去（薪资、加班、成长、出口）；
 - 需要在多份 Offer / 多个投递方向之间排序，或持续跟踪一批公司的岗位变化。
 
+不限专业：法学、金融、医药、设计、教育、工程、市场等方向均可使用，只要在档案里写明专业、资质与目标岗位族。
+
 ---
 
 ## 目录结构
@@ -84,10 +86,11 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
    |---|---|---|
    | `identity.graduation_year` | 毕业年份（用于资格校验） | `2028` |
    | `identity.highest_degree` | 最高学历 | `硕士` |
-   | `identity.major` | 专业 | `计算机应用技术` |
+   | `identity.major` | 专业（不限定计算机） | `法学` / `会计学` / `药学` |
+   | `identity.professional_qualifications` | 执业资格/证书（法考、CPA、教资等） | `[CPA, 法律职业资格证]` |
    | `demonstrated_evidence` | 已证明能力：论文、实习、项目、竞赛，尽量带量化结果 | `一篇目标检测论文；一次端侧部署项目（示例）` |
-   | `preferences.preferred_roles` | 优先岗位族，影响 career 维度打分 | `视觉算法工程师, 大模型算法工程师, 端侧AI算法工程师` |
-   | `preferences.avoid_or_deprioritize` | 明确回避/降权方向 | `纯研究岗, 高强度后端, 互联网厂产品岗` |
+   | `preferences.preferred_roles` | 优先岗位族，影响 career 维度打分 | `算法工程师` / `法务,合规` / `财务,审计` |
+   | `preferences.avoid_or_deprioritize` | 明确回避/降权方向（示例，可按专业调整） | `销售类, 倒班岗` |
    | `constraints` | 地点、薪资下限、强度上限、出差 | `city=不限; max_intensity=3` |
 
 3. 隐私提示：`profiles/default.yaml` 含个人信息，本仓库默认通过 `.gitignore` 排除，不要提交。
@@ -101,7 +104,7 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
 ### 触发
 
 - 显式调用：`$job-fit-research ...`
-- 自然语言触发：直接说「帮我查一下 XX 公司的校招」「对比一下国企和外企」「看看有没有 27 届能投的算法岗」等。
+- 自然语言触发：直接说「帮我查一下 XX 公司的校招」「对比一下国企和外企」「看看有没有 28 届能投的岗位」等。
 
 ### 支持的参数（`key=value` 形式）
 
@@ -114,6 +117,7 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
 | `city` | 城市 | `city=深圳,上海` |
 | `graduation` | 毕业年份 | `graduation=2028` |
 | `degree` | 学历要求 | `degree=硕士` |
+| `major` | 专业/资质关键词 | `major=法学` / `major=会计,金融` |
 | `batch` | 批次 | `batch=early` / `autumn` / `spring` / `intern-conversion` |
 | `employment` | 全职/实习 | `employment=full-time` / `internship` |
 | `salary_min` | 年薪下限（按总包比较） | `salary_min=200000` |
@@ -140,7 +144,7 @@ Skill 的评分需要你的真实信息作为基准。第一次使用前：
 ### 调用示例
 
 ```text
-# 查两家公司的 27 届校招，做标准深度
+# 查两家公司的 28 届校招，做标准深度
 $job-fit-research company=星河科技,蓝云集团 graduation=2028 source_depth=standard
 
 # 只要官方确认、薪资 20 万以上、强度 3 以内
@@ -154,6 +158,12 @@ $job-fit-research profile=/absolute/path/profile.yaml company=远山智能 sourc
 
 # 对比上次快照，只报告新增、关闭和截止变化的岗位
 $job-fit-research 对比 previous-jobs.json，只报告新开放、关闭和截止日期变化的岗位
+
+# 非技术专业示例：法学方向
+$job-fit-research company=星河科技,蓝云集团 role=法务,合规 graduation=2028 major=法学
+
+# 金融/财务方向
+$job-fit-research major=会计,金融 role=财务,审计,风控 city=成都,武汉 source_depth=standard
 ```
 
 ---

@@ -25,14 +25,14 @@ Check before scoring:
 
 Mark `hard_gate_failed: true` only when a stated mandatory requirement is not met. Unclear evidence is not a failed gate; it lowers confidence.
 
-### 列举式技术栈要求（语言/框架清单）
+### 列举式技能/资质清单（语言/框架/证书/执业资格）
 
-JD 的“任职要求”里逐条列出的技术栈（如“熟练掌握 Python，熟悉 TypeScript/Go/Java 至少一种”“熟练使用 Tornado/Django/Flask 任一”）没有“优先/加分”等软化词时，默认按候选门槛处理：
+JD 的“任职要求”里逐条列出的技能/资质清单（如“熟练掌握 Python，熟悉 TypeScript/Go/Java 至少一种”“持有 CPA/法考/护士资格证之一”“熟练使用 Figma/Photoshop/AE 至少一种”“熟练使用 Stata/SPSS/R 至少一种”）没有“优先/加分”等软化词时，默认按候选门槛处理：
 
 - 候选人不满足任一列举项：`eligibility` 不得高于 4；若该技能属于岗位核心职责且无任何等效证据，不得高于 3；
-- 等价能力替代（如 C++ 代替 Java、FastAPI 代替 Django）：必须在报告 Gap 中标注“未验证等价”，`eligibility` 最高 4，并建议投递前与 HR/招聘者确认后再决定是否投入；
+- 等价能力替代（如 C++ 代替 Java、R 代替 SPSS、持有相近执业资格代替指定证书）：必须在报告 Gap 中标注“未验证等价”，`eligibility` 最高 4，并建议投递前与 HR/招聘者确认后再决定是否投入；
 - 完全无法满足且该技能是岗位核心依赖：`hard_gate_failed: true`；
-- 每个评分岗位必须在 fit 理由中写明 JD 技术栈清单的逐条勾选结果，缺失项必须进入 Gap，不得因为 Python 强或方向匹配而跳过清单。
+- 每个评分岗位必须在 fit 理由中写明 JD 技能/资质清单的逐条勾选结果，缺失项必须进入 Gap，不得因为单项能力突出或方向匹配而跳过清单。
 
 ### 个人偏好降权（profile 的 `company_scoped_preferences`）
 
@@ -43,13 +43,13 @@ JD 的“任职要求”里逐条列出的技术栈（如“熟练掌握 Python�
 - 若同公司存在未命中降权的技术/算法/工程岗位，降权岗位的排名一律置于其后；
 - 用户当轮明确点名要该类岗位时，本规则不适用，恢复常规评分。
 
-### 候选人算法岗权重（profile 的 `role_weight_rules`）
+### 候选人主岗族权重（profile 的 `role_weight_rules`）
 
-候选档可能声明算法岗权重（如“无顶会条款的视觉算法岗均按常规权重评估”）。命中时：
+候选档可能声明任意专业的目标岗位族权重（如“无顶会条款的视觉算法岗按常规权重”“法学/法务岗按常规权重”“医药类岗位按常规权重”）。命中时：
 
-- 视觉算法、大模型算法、端侧/边缘算法岗（JD 无顶会/顶刊条款）按常规 fit/quality 公式评分并参与排序，不因候选人有产品/解决方案倾向而降权；
-- 产品/解决方案岗不得自动排在算法岗之前（互联网厂产品岗降权规则仍适用）；
-- 算法岗 JD 含顶会条款时，仍执行“顶会条款→competition≤3，最高 conditional”。
+- 候选人档案中声明的目标岗位族（算法/研发/产品/市场/财务/设计/法务/医药/教育等，JD 无顶会/顶刊条款）按常规 fit/quality 公式评分并参与排序，不因候选人兼有产品/解决方案倾向而降权；
+- 产品/解决方案岗不得自动排在主岗族之前（互联网厂产品岗降权来自用户档案偏好，可按行业/专业覆盖）；
+- 主岗族 JD 含顶会条款时，仍执行“顶会条款→competition≤3，最高 conditional”。
 
 ## 2. Candidate-fit score
 
@@ -89,7 +89,7 @@ Fit bands:
 
 Do not use employer prestige, general pay level, or general stability as fit evidence. Those belong in job quality.
 
-### 顶会/顶刊条款的强制降分（任何出现位置均触发）
+### 顶会/顶刊条款的强制降分（任何出现位置均触发；适用于任何学科）
 
 只要 JD 出现「顶会/顶刊」「顶级会议/期刊」或点名顶级会议/期刊（ACL、CVPR、ICCV、ECCV、ICML、NeurIPS、TPAMI 等），或出现「高水平论文」等同类表述——无论位于硬性任职要求还是加分项/优先项——且候选人没有顶级论文（普通期刊/会议论文不算顶级），一律按以下规则处理：
 

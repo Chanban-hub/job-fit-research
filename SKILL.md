@@ -27,7 +27,7 @@ description: Research current campus, early-career, internship-conversion, or ex
 - `company=<names>`：指定一个或多个公司。
 - `ownership=<private|foreign|state-owned|central-soe|joint-venture|any>`
 - `role=<keywords>`、`exclude_role=<keywords>`、`industry=<keywords>`、`city=<names>`
-- `graduation=<year>`、`degree=<level>`、`batch=<early|autumn|spring|intern-conversion|all>`
+- `graduation=<year>`、`degree=<level>`、`major=<专业>`、`batch=<early|autumn|spring|intern-conversion|all>`
 - `employment=<full-time|internship|all>`、`salary_min=<amount>`、`max_intensity=<1-5>`
 - `travel=<yes|no|limited>`、`deadline_before=<date>`、`freshness=<days>`、`count=<number>`
 - `source_depth=<quick|standard|deep>`、`require_official=<yes|no>`
@@ -45,11 +45,11 @@ description: Research current campus, early-career, internship-conversion, or ex
 
 ## 1. PARSE：解析范围
 
-提取公司、岗位族、城市、毕业年份、批次、雇佣类型、薪资、强度、出差和排除条件。区分：
+提取公司、岗位族、专业/资质、城市、毕业年份、批次、雇佣类型、薪资、强度、出差和排除条件。区分：
 
 - 硬约束：`必须`、`只要`、`不接受`、明确的资格条件；
 - 软偏好：`最好`、`优先`、`不太想`；
-- 列举式技术栈要求：任职要求中逐条列出的技术栈/语言/框架（如“熟练掌握 X，熟悉 Y/Z 至少一种”“熟练使用 A/B/C 任一”）默认按候选门槛处理，不得当作软偏好；候选人不满足任一列举项时 `eligibility` 不得给 5，等价能力（如 C++ 代替 Java）必须标注“未验证等价”并降低置信，投递前需与 HR 确认；
+- 列举式技能/资质清单：任职要求中逐条列出的语言/框架/证书/执业资格（如“熟练掌握 X，熟悉 Y/Z 至少一种”“持有 CPA/法考/护士资格证之一”“熟练使用 A/B/C 任一”）默认按候选门槛处理，不得当作软偏好；候选人不满足任一列举项时 `eligibility` 不得给 5，等价能力（如 C++ 代替 Java、R 代替 SPSS、相近执业资格代替指定证书）必须标注“未验证等价”并降低置信，投递前需与 HR 确认；
 - 未知项：不能从用户输入或档案得到的事实。
 
 选择模式：
@@ -63,7 +63,7 @@ description: Research current campus, early-career, internship-conversion, or ex
 
 读取指定档案。若档案不可用，从会话、简历或用户材料中提取证据。分为：
 
-- 硬资格：毕业年份、学历、专业、语言、工作许可、实习时长；
+- 硬资格：毕业年份、学历、专业、资质、语言、工作许可、实习时长；
 - 已证明能力：项目、论文、实习、工具、领导力、写作和跨部门协作；
 - 偏好与限制：地点、公司类型、工作强度、出差、薪资、编码强度；
 - 弱证据与缺口。
@@ -179,7 +179,7 @@ python <skill-directory>/scripts/score_jobs.py <input.json> --format markdown
 提交前逐项回答 `yes/no`：
 
 - 所有“当前开放”结论是否有打开过的岗位页支持？
-- 是否对每个入围岗位的任职要求做过逐条技术栈/语言/框架勾选，且缺失项没有拿到 eligibility=5？
+- 是否对每个入围岗位的任职要求做过逐条技能/资质清单（语言/框架/证书/执业资格）勾选，且缺失项没有拿到 eligibility=5？
 - 是否把明确事实、员工报告、市场估计和推断区分开？
 - 是否把适配度与岗位绝对质量分开？
 - 是否披露硬资格失败、信源冲突和未知薪资？

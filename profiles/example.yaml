@@ -8,6 +8,7 @@ identity:
   degree_status: "在读"
   school: ""
   major: ""
+  professional_qualifications: []
   languages: []
   work_authorization: ""
 

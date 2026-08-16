@@ -16,6 +16,7 @@ Treat `must`, `only`, `不接受`, `必须`, and `排除` as hard constraints. T
 - Search date: current system date.
 - Profile: `profiles/default.yaml` if it exists.
 - Graduation year: profile value.
+- Major: profile value; if unset, do not assume any major restriction.
 - Batch: early, autumn, spring, and internship-conversion routes; label each accurately.
 - Employment: full-time; include internships only when conversion routes are requested or no formal foreign-company batch is open.
 - Ownership: any, but preserve requested category coverage.
@@ -43,11 +44,23 @@ Normalize common expressions:
 | 只要官网确认 | `require_official=yes` |
 | 多找信源、深度调查 | `source_depth=deep` |
 | 快速看看 | `source_depth=quick` |
+| 法学/法务/合规 | `major=法学 role=法务,合规,知识产权` |
+| 医药/临床/药企 | `major=药学,临床医学 role=医学信息,药物警戒,医药代表` |
+| 会计/金融 | `major=会计,金融 role=财务,审计,风控,投研` |
+| 设计/艺术 | `major=设计 role=UI,UX,平面,陈列,工业设计` |
 
 ## Examples
 
 ```text
 $job-fit-research company=星河科技,蓝云集团 role=算法工程师,产品经理 graduation=2028 city=成都,武汉 count=8
+```
+
+```text
+$job-fit-research company=星河科技,蓝云集团 role=法务,合规,市场 graduation=2028 major=法学
+```
+
+```text
+$job-fit-research major=会计,金融 role=财务,审计,风控 city=成都,武汉 source_depth=standard
 ```
 
 ```text
@@ -69,6 +82,21 @@ $job-fit-research 对比 previous-jobs.json，只报告新开放、关闭和截�
 ```text
 $job-fit-research company=星河科技,蓝云集团 source_depth=deep require_official=yes，交叉验证薪资、工时和留用情况
 ```
+
+## 专业 → 岗位族速查（示例词典）
+
+以下仅为常用映射示例，实际以 JD 原文和候选人档案为准：
+
+| 专业/背景 | 常见岗位族 |
+|---|---|
+| 法学 | 法务、合规、知识产权、律师助理、争议解决 |
+| 会计/金融 | 财务、审计、风控、投研、资金管理 |
+| 医学/药学 | 医学信息、药物警戒、医药代表、临床协调、医学写作 |
+| 设计/艺术 | UI/UX、平面、陈列、工业设计、游戏美术 |
+| 教育/师范 | 教研、课程产品、培训、教育运营 |
+| 土木/机械/电气 | 工程、工艺、设备、项目、质量管理 |
+| 新闻/中文/传播 | 内容、文案、运营、公关、品牌 |
+| 市场/广告 | 市场、品牌、投放、渠道、数据分析 |
 
 ## Company mode
 
